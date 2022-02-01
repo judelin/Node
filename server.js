@@ -1,8 +1,17 @@
-const express = require("express")
-const app = express()
-
-app.get('/', function(req, res){
-    res.send("Hello word")
-})
-
-app.listen(process.env.PORT || 5000)
+import path from 'path';
+import express from 'express';
+const PORT = process.env.HTTP_PORT || 4001;
+const app = express();
+app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+app.get('/', (req, res) => {
+  res.send('just gonna send it');
+});
+app.get('/flower', (req, res) => {
+  res.json({
+    name: 'Dandelion',
+    colour: 'Blue-ish'
+  });
+});
+app.listen(PORT, () => {
+  console.log(`Server listening at port ${PORT}.`);
+});
