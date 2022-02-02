@@ -15,3 +15,8 @@ app.get('/flower', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening at port ${PORT}.`);
 });
+
+
+/**option_settings:
+  aws:elasticbeanstalk:container:nodejs:
+    NodeCommand: "node server.compiled.js" */
